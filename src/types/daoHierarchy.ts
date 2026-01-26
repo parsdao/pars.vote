@@ -1,7 +1,13 @@
 import { Address } from 'viem';
 
 /**
- * PARS-10 DAO Framework
+ * PARS DAO Ecosystem
+ *
+ * Hierarchy:
+ * - MIGA Token: Main governance token, mintable on Solana, omnichain via Wormhole
+ * - CYRUS Token: Cultural/heritage token tied to cyrus.money
+ * - PARS DAO: Parent governance DAO overseeing the PARS-10 network
+ * - PARS-10 Sub-DAOs: Specialized operational DAOs
  *
  * Token Buckets:
  * - Working Treasury (WT): liquid budget for 12-24 month operations
@@ -9,6 +15,66 @@ import { Address } from 'viem';
  *
  * Rule: Each DAO gets WT allocation. Only Treasury can move END via timelocked proposals.
  */
+
+// Token DAO type for top-level token governance
+export interface TokenDAO {
+  id: string;
+  name: string;
+  symbol: string;
+  persianName: string;
+  description: string;
+  website: string;
+  chains: string[];
+  primaryChain: string;
+  totalSupply: string;
+  status: 'active' | 'bootstrap' | 'coming-soon';
+  features: string[];
+}
+
+// MIGA Token - Main omnichain governance token
+export const MIGA_TOKEN_DAO: TokenDAO = {
+  id: 'miga',
+  name: 'MIGA Protocol',
+  symbol: 'MIGA',
+  persianName: 'میگا',
+  description: 'Main governance token for the PARS ecosystem. Mintable on Solana, bridgeable to 7 chains. Governed by Pars.Network.',
+  website: 'https://migaprotocol.xyz',
+  chains: ['Solana', 'Ethereum', 'Base', 'Arbitrum', 'Polygon', 'Lux', 'Bitcoin (Runes)'],
+  primaryChain: 'Solana',
+  totalSupply: '1,000,000,000',
+  status: 'active',
+  features: [
+    'Solana-first mint with bonding curve',
+    '7-chain omnichain leaderboard',
+    'vePARS governance on Pars.Network',
+    'Race to Nowruz competition',
+    'No VCs, no presales, no team allocation',
+  ],
+};
+
+// CYRUS Token - Cultural/heritage token
+export const CYRUS_TOKEN_DAO: TokenDAO = {
+  id: 'cyrus',
+  name: 'CYRUS DAO',
+  symbol: 'CYRUS',
+  persianName: 'کوروش',
+  description: 'Cultural heritage token honoring Cyrus the Great. 7B supply across 7 chains. Governed by Pars.Network.',
+  website: 'https://cyrus.money',
+  chains: ['Solana', 'Ethereum', 'Base', 'Arbitrum', 'Polygon', 'Lux', 'Bitcoin (Runes)'],
+  primaryChain: 'Solana',
+  totalSupply: '7,000,000,000', // 7B across 7 chains
+  status: 'active',
+  features: [
+    'Heritage preservation funding',
+    'Cultural grants program',
+    'Persian language initiatives',
+    'Pars.Network governance',
+    '7-chain omnichain support',
+  ],
+};
+
+// All token DAOs
+export const TOKEN_DAOS: TokenDAO[] = [MIGA_TOKEN_DAO, CYRUS_TOKEN_DAO];
 
 export type TreasuryBucket = 'working' | 'endowment';
 

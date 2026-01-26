@@ -12,10 +12,13 @@ import {
   ChartLine,
   ArrowUpRight,
   Info,
+  CurrencyCircleDollar,
+  Crown,
+  Globe,
 } from '@phosphor-icons/react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { PARS_10_DAOS, CATEGORY_INFO, SubDAO, getFundingSummary, CYRUS_MAIN_DAO } from '../../types/daoHierarchy';
+import { PARS_10_DAOS, CATEGORY_INFO, SubDAO, getFundingSummary, CYRUS_MAIN_DAO, TOKEN_DAOS, TokenDAO, MIGA_TOKEN_DAO, CYRUS_TOKEN_DAO } from '../../types/daoHierarchy';
 
 // Map icon names to actual icon components
 const iconMap: Record<string, React.ElementType> = {
@@ -190,6 +193,121 @@ function PARS10Card({ dao }: PARS10CardProps) {
   return <Link to={internalRoute}>{content}</Link>;
 }
 
+// Token DAO Card component
+interface TokenDAOCardProps {
+  token: TokenDAO;
+  icon: React.ElementType;
+  gradient: string;
+}
+
+function TokenDAOCard({ token, icon: IconComponent, gradient }: TokenDAOCardProps) {
+  return (
+    <a href={token.website} target="_blank" rel="noopener noreferrer">
+      <GridItem
+        p={5}
+        bg={gradient}
+        borderRadius="lg"
+        cursor="pointer"
+        border="2px solid"
+        borderColor="color-gold-400"
+        _hover={{
+          transform: 'translateY(-4px)',
+          boxShadow: '0 8px 30px rgba(212, 175, 55, 0.3)',
+        }}
+        transition="all 300ms ease-in-out"
+        position="relative"
+      >
+        {/* Status Badge */}
+        <Badge
+          position="absolute"
+          top={3}
+          right={3}
+          colorScheme={statusColors[token.status]}
+          fontSize="xs"
+          px={2}
+          py={0.5}
+          borderRadius="full"
+        >
+          {statusLabels[token.status]}
+        </Badge>
+
+        <VStack align="start" spacing={3}>
+          {/* Header */}
+          <Flex align="center" justify="space-between" w="full">
+            <Flex
+              align="center"
+              justify="center"
+              w={12}
+              h={12}
+              borderRadius="xl"
+              bg="rgba(212, 175, 55, 0.2)"
+              border="1px solid"
+              borderColor="color-gold-400"
+            >
+              <Icon as={IconComponent} boxSize={7} color="color-gold-400" />
+            </Flex>
+            <Icon as={ArrowUpRight} boxSize={5} color="color-gold-400" />
+          </Flex>
+
+          {/* Name with Persian */}
+          <Box>
+            <HStack spacing={2} mb={1}>
+              <Text textStyle="text-lg-medium" color="white">
+                {token.symbol}
+              </Text>
+              <Text textStyle="text-md-regular" color="color-neutral-300" dir="rtl">
+                {token.persianName}
+              </Text>
+            </HStack>
+            <Text textStyle="text-sm-regular" color="color-neutral-200">
+              {token.name}
+            </Text>
+          </Box>
+
+          {/* Description */}
+          <Text textStyle="text-xs-regular" color="color-neutral-300" noOfLines={2}>
+            {token.description}
+          </Text>
+
+          {/* Chains */}
+          <Box w="full">
+            <HStack justify="space-between" mb={1}>
+              <Text textStyle="text-xs-regular" color="color-neutral-400">
+                Primary Chain
+              </Text>
+              <Badge colorScheme="purple" fontSize="xs">
+                {token.primaryChain}
+              </Badge>
+            </HStack>
+            <HStack spacing={1} flexWrap="wrap">
+              {token.chains.slice(0, 4).map(chain => (
+                <Badge key={chain} variant="outline" colorScheme="gray" fontSize="2xs">
+                  {chain}
+                </Badge>
+              ))}
+              {token.chains.length > 4 && (
+                <Badge variant="outline" colorScheme="gray" fontSize="2xs">
+                  +{token.chains.length - 4}
+                </Badge>
+              )}
+            </HStack>
+          </Box>
+
+          {/* Supply */}
+          <HStack spacing={2} w="full" justify="space-between">
+            <Text textStyle="text-xs-regular" color="color-neutral-400">
+              Total Supply
+            </Text>
+            <Text textStyle="text-xs-medium" color="color-gold-400">
+              {token.totalSupply}
+            </Text>
+          </HStack>
+        </VStack>
+      </GridItem>
+    </a>
+  );
+}
+
 function FundingSummaryBar() {
   const summary = getFundingSummary();
 
@@ -255,7 +373,46 @@ export function FeaturedDAOs() {
 
   return (
     <Flex direction="column" gap="1.5rem">
-      {/* Header */}
+      {/* Token DAOs Section */}
+      <Box>
+        <Flex align="center" justify="space-between" flexWrap="wrap" gap={2} mb={4}>
+          <Box>
+            <HStack spacing={2} mb={1}>
+              <Text textStyle="text-xl-regular" color="white">
+                {t('tokenDAOs', 'Governance Tokens')}
+              </Text>
+              <Text textStyle="text-lg-regular" color="color-neutral-400" dir="rtl">
+                توکن‌های حکمرانی
+              </Text>
+            </HStack>
+            <Text textStyle="text-sm-regular" color="color-neutral-400">
+              Mint on Solana, bridge anywhere. Governance on Pars.Network.
+            </Text>
+          </Box>
+          <Badge colorScheme="purple" fontSize="sm" px={3} py={1}>
+            7-Chain Omnichain
+          </Badge>
+        </Flex>
+
+        {/* Token Cards */}
+        <Grid templateColumns={['1fr', '1fr', 'repeat(2, 1fr)']} gap={4}>
+          <TokenDAOCard
+            token={MIGA_TOKEN_DAO}
+            icon={Globe}
+            gradient="linear-gradient(135deg, rgba(88, 28, 135, 0.3) 0%, rgba(15, 23, 42, 0.9) 100%)"
+          />
+          <TokenDAOCard
+            token={CYRUS_TOKEN_DAO}
+            icon={Crown}
+            gradient="linear-gradient(135deg, rgba(146, 64, 14, 0.3) 0%, rgba(15, 23, 42, 0.9) 100%)"
+          />
+        </Grid>
+      </Box>
+
+      {/* Divider */}
+      <Box h="1px" bg="color-neutral-800" />
+
+      {/* PARS-10 Header */}
       <Flex align="center" justify="space-between" flexWrap="wrap" gap={2}>
         <Box>
           <HStack spacing={2} mb={1}>
