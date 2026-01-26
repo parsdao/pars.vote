@@ -1,152 +1,70 @@
-# DAO Interface
+# Pars.Vote
 
-## Local Development
+**Unified Governance for Persian DAOs**
 
-Clone the repository
+[![Live](https://img.shields.io/badge/Live-pars.vote-gold)](https://pars.vote)
+[![License](https://img.shields.io/badge/License-AGPL--3.0-blue.svg)](LICENSE)
 
-```shell
-$ git clone git@github.com:luxdao/interface.git
+## Overview
+
+Pars.Vote is the unified governance platform for the Persian diaspora DAOs. Stake any of three tokens (CYRUS, MIGA, or PARS) to participate in community governance with equal voting power.
+
+## Multi-Token Governance
+
+| Token | Project | Voting Power |
+|-------|---------|--------------|
+| CYRUS | Cyrus DAO | 1 Token = 1 Vote |
+| MIGA | MIGA Protocol | 1 Token = 1 Vote |
+| PARS | Pars Network | 1 Token = 1 Vote |
+
+All three tokens provide **equal governance power** - stake any combination to participate in:
+- Treasury allocation decisions
+- Cultural initiatives
+- Freedom-of-information projects
+- Humanitarian aid coordination
+
+## Features
+
+- **vePARS Governance**: Vote-escrow model for committed governance
+- **Multi-DAO Support**: Unified interface for all Persian DAOs
+- **On-chain Transparency**: All votes and treasury movements verifiable
+- **Global Community**: Supporting 8M+ Persian diaspora across 85+ countries
+
+## Development
+
+```bash
+# Install dependencies
+pnpm install
+
+# Run development server
+pnpm dev
+
+# Build for production
+pnpm build
 ```
 
-Change to application's `Node.js` version
+## Tech Stack
 
-```shell
-$ nvm use
-```
+- React 18 + Vite + TypeScript
+- Chakra UI
+- wagmi + viem (EVM)
+- i18n (Multi-language support)
+- Deployed on GitHub Pages
 
-Install the dependencies
+## Links
 
-```shell
-$ npm install
-```
+- **Governance**: [pars.vote](https://pars.vote)
+- **Docs**: [docs.pars.vote](https://docs.pars.vote)
+- **MIGA**: [migaprotocol.xyz](https://migaprotocol.xyz)
+- **Pars Network**: [pars.network](https://pars.network)
 
-Running development environment
+## Related Repositories
 
-```shell
-$ npm run dev
-```
+- [parsdao/pars.network](https://github.com/parsdao/pars.network) - Pars Network
+- [parsdao/pips](https://github.com/parsdao/pips) - Pars Improvement Proposals
+- [migaprotocol/protocol](https://github.com/migaprotocol/protocol) - MIGA Token Site
+- [migaprotocol/foundation](https://github.com/migaprotocol/foundation) - MIGA Foundation
 
-### Cloudflare Pages functions
+## License
 
-We're using Cloudflare Pages functions for retrieving various off-chain data.
-Currently it's being used to fetch abstract `address`'s ERC-20, ERC-721 and DeFi balances through `Moralis`.
-It is crucial to have Cloudflare Pages functions running locally to work with anything related to DAO treasury, for instance
-
-- Treasury page
-- Payments feature
-
-### Environment Variables
-
-The application uses two sets of environment variables:
-
-1. **Functions Environment Variables** (`.dev.vars`)
-
-   - Copy `.dev.vars.example` to `.dev.vars` for local development
-   - Contains variables needed for Cloudflare Pages Functions (e.g., Moralis API key)
-   - In production, these need to be manually configured as "secrets" in the Cloudflare Dashboard
-
-2. **Application Environment Variables** (`.env.local`)
-   - Copy `.env` to `.env.local` for local development
-   - Contains Vite-injected variables for the React application
-   - In production, these also need to be manually configured as "secrets" in the Cloudflare Dashboard
-
-## Localization
-
-### API Key
-
-Obtain your API key from https://www.deepl.com/pro-api?cta=header-pro-api
-Set it to VITE_APP_DEEPL_API_KEY in .env.local
-
-### Localize
-
-Run `npm run localize`
-
-Only new strings are automatically translated.
-Translations can be manually updated, based on professional reviews or community feedback.
-The script does not modify existing translations.
-
-### Localization Verifications
-
-Run `npm run localize`
-
-This script is also used by Git Action as a precheck at merge.
-
-## Feature flags
-
-### Setup
-
-Start with adding a new Feature Flag to the app. In https://github.com/luxdao/interface/src/helpers/featureFlags.ts, Add a flag.
-
-```typescript
-export const FEATURE_FLAGS = ['flag_dev', 'flag_feature_a'] as const;
-```
-
-### Remote Configuration
-
-Two Firebase projects were set up. "DAODAO" for production, and "DAODAO Develop" for development.
-
-During develop, set the feature flag to "on" on "DAODAO Develop".
-
-After the feature is completed, tested, and ready to release, set the flag to "on" on "DAODAO".
-
-### Usage
-
-In consumer of the flag, use the useFeatureFlag hook
-
-```typescript
-import useFeatureFlag from '../../helpers/environmentFeatureFlags';
-
-const featureAEnabled = useFeatureFlag('flag_feature_a');
-```
-
-### Injecting flags via your environment
-
-During development, add a flag environment variable in your (local) .env(.local) file. It must be a string value of "ON" or "OFF". The syntax of the environment variable is `VITE_APP_<FLAG_NAME>`.
-
-```shell
-VITE_APP_FLAG_FEATURE_A="ON"
-```
-
-You can also set the flag in the URL with a query param. Notice how the `VITE_APP_` prefix is omitted and the flag name in the query param matches the name you gave it in code:
-
-```shell
-http://localhost:3000/?flag_feature_a=on
-```
-
-### Testing
-
-Override the flag value by adding query params to the URL. Notice how the `VITE_APP_` prefix is omitted and the flag name is in lowercase:
-
-```
-https://app.luxdao.org?flag_feature_a=on
-```
-
-From then, the flag holds the value from the URL param until app is refreshed
-
-### Deployment and after
-
-Deployment can ship with the flag turned off in .env file.
-
-Change the value in .env file after the feature is completed and thouroughly tested.
-
-Once code under the feature flag has been proven reliable, remove the feature flag and dead code from code base.
-
-## Subgraph
-
-We're using `Subgraph` to index certain "metadata" events to simplify data fetching from application site.
-Repository, that implements mapping located [here](https://github.com/luxdao/subgraph).
-
-If you updated mapping and deployed new version - you might need to rebuild `Subgraph` artifacts. Use command below.
-
-Build Subgraph artifacts
-
-```shell
-$ npm run graphql:build
-```
-
-## Deployment Notes
-
-This app is deployed on Cloudflare Pages with the following configuration:
-
-- Production deployment (tracking `main` branch): https://app.new.luxdao.org
-- All other branches get preview deployments at: https://branch-name.interface.pages.dev
+AGPL-3.0
