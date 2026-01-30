@@ -2,7 +2,7 @@
   "heroBadge": "Pars Network - Unified Governance",
   "heroTitle": "Govern the Future of",
   "heroTitleHighlight": "Persian Heritage",
-  "heroDescription": "Stake CYRUS, MIGA, or PARS tokens to participate in community governance. Vote on cultural initiatives, freedom-of-information projects, and humanitarian aid across all Persian DAOs.",
+  "heroDescription": "Stake PARS, MIGA, or PARS tokens to participate in community governance. Vote on cultural initiatives, freedom-of-information projects, and humanitarian aid across all Persian DAOs.",
   "heroStat1Value": "3 Tokens",
   "heroStat1Label": "Accepted",
   "heroStat2Value": "1 Vote",
@@ -33,7 +33,7 @@
   "submitProposalCTA": "Submit Proposal",
   "submitProposalCTASubtitle": "Propose an initiative for the community.",
   "stakingCTA": "Stake Any Token",
-  "stakingCTASubtitle": "CYRUS, MIGA, or PARS → vePARS governance.",
+  "stakingCTASubtitle": "PARS, MIGA, or PARS → vePARS governance.",
   "featuredDAOs": "Featured DAOs",
   "acceptedTokens": "Accepted Tokens",
   "acceptedTokensDesc": "Stake any of these tokens for equal governance power"

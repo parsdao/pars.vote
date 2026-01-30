@@ -1,14 +1,14 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Cyrus Governance - Homepage', () => {
+test.describe('Pars Governance - Homepage', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
   });
 
-  test('should display Cyrus DAO homepage', async ({ page }) => {
-    await expect(page).toHaveTitle(/CYRUS|Cyrus/i);
-    await expect(page.locator('text=/Getting Started|Welcome|Cyrus/i').first()).toBeVisible({ timeout: 10000 });
+  test('should display Pars DAO homepage', async ({ page }) => {
+    await expect(page).toHaveTitle(/PARS|Pars/i);
+    await expect(page.locator('text=/Getting Started|Welcome|Pars/i').first()).toBeVisible({ timeout: 10000 });
   });
 
   test('should display connect wallet button', async ({ page }) => {

@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Cyrus Governance - Ventures Page', () => {
+test.describe('Pars Governance - Ventures Page', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/ventures');
     await page.waitForLoadState('networkidle');
@@ -17,7 +17,7 @@ test.describe('Cyrus Governance - Ventures Page', () => {
   });
 
   test('should show partner CTA card', async ({ page }) => {
-    const partnerCard = page.locator('text=/Partner with Cyrus Foundation/i').first();
+    const partnerCard = page.locator('text=/Partner with Pars Foundation/i').first();
     await expect(partnerCard).toBeVisible({ timeout: 10000 });
   });
 
@@ -27,7 +27,7 @@ test.describe('Cyrus Governance - Ventures Page', () => {
   });
 
   test('should show token gate badge', async ({ page }) => {
-    const badge = page.locator('text=/1M.*CYRUS.*Required/i').first();
+    const badge = page.locator('text=/1M.*PARS.*Required/i').first();
     await expect(badge).toBeVisible({ timeout: 10000 });
   });
 
@@ -53,14 +53,14 @@ test.describe('Cyrus Governance - Ventures Page', () => {
   });
 
   test('should show token gate overlay when wallet not connected', async ({ page }) => {
-    // Token gate overlay should show requiring 1M CYRUS
+    // Token gate overlay should show requiring 1M PARS
     const overlay = page.locator('text=/Investor Access Required/i');
     await expect(overlay).toBeVisible({ timeout: 10000 });
   });
 
-  test('should show get CYRUS button in token gate', async ({ page }) => {
-    const getCyrusButton = page.locator('text=/Get CYRUS/i').first();
-    await expect(getCyrusButton).toBeVisible({ timeout: 10000 });
+  test('should show get PARS button in token gate', async ({ page }) => {
+    const getParsButton = page.locator('text=/Get PARS/i').first();
+    await expect(getParsButton).toBeVisible({ timeout: 10000 });
   });
 
   test('should not have critical console errors', async ({ page }) => {

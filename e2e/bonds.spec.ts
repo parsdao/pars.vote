@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Cyrus Governance - Bonds Page', () => {
+test.describe('Pars Governance - Bonds Page', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/bonds');
     await page.waitForLoadState('networkidle');
@@ -78,7 +78,7 @@ test.describe('Cyrus Governance - Bonds Page', () => {
   });
 });
 
-test.describe('Cyrus Governance - Bonds Investment Flow', () => {
+test.describe('Pars Governance - Bonds Investment Flow', () => {
   test('should navigate from homepage to bonds', async ({ page }) => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
