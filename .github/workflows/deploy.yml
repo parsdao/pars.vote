@@ -37,13 +37,19 @@ jobs:
       - name: Build
         run: pnpm build
         env:
+          # App config
           VITE_APP_NAME: "Pars DAO"
           VITE_APP_SITE_URL: "https://pars.vote"
-          VITE_APP_ALCHEMY_API_KEY: ${{ secrets.VITE_APP_ALCHEMY_API_KEY }}
-          VITE_APP_INFURA_IPFS_API_KEY: ${{ secrets.VITE_APP_INFURA_IPFS_API_KEY }}
-          VITE_APP_INFURA_IPFS_API_SECRET: ${{ secrets.VITE_APP_INFURA_IPFS_API_SECRET }}
-          VITE_APP_THEGRAPH_API_KEY: ${{ secrets.VITE_APP_THEGRAPH_API_KEY }}
+          # Lux shared infrastructure
+          VITE_APP_RPC_URL: "https://rpc.lux.network"
+          VITE_APP_IPFS_GATEWAY: "https://ipfs.lux.network"
+          VITE_APP_IPFS_API: "https://ipfs.lux.network/api/v0"
+          VITE_APP_GRAPH_URL: "https://graph.lux.network/subgraphs/name/pars-dao"
+          # API keys from secrets (WalletConnect required)
           VITE_APP_WALLET_CONNECT_PROJECT_ID: ${{ secrets.VITE_APP_WALLET_CONNECT_PROJECT_ID }}
+          # Optional fallbacks
+          VITE_APP_ALCHEMY_API_KEY: ${{ secrets.VITE_APP_ALCHEMY_API_KEY }}
+          VITE_APP_THEGRAPH_API_KEY: ${{ secrets.VITE_APP_THEGRAPH_API_KEY }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
