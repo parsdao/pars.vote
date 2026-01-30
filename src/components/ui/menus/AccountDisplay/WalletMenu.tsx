@@ -1,6 +1,6 @@
 import { MenuList } from '@chakra-ui/react';
 import { Link, Plugs } from '@phosphor-icons/react';
-import { useWeb3Modal } from '@web3modal/wagmi/react';
+import { useConnectModal } from '@rainbow-me/rainbowkit';
 import { useTranslation } from 'react-i18next';
 import { useAccount, useDisconnect } from 'wagmi';
 import { NEUTRAL_2_82_TRANSPARENT } from '../../../../constants/common';
@@ -11,7 +11,7 @@ import { MenuItemButton } from './MenuItemButton';
 export function WalletMenu() {
   const user = useAccount();
   const { disconnect } = useDisconnect();
-  const { open } = useWeb3Modal();
+  const { openConnectModal } = useConnectModal();
   const { t } = useTranslation('menu');
 
   return (
@@ -37,7 +37,7 @@ export function WalletMenu() {
           testId="accountMenu-connect"
           label={t('connect')}
           Icon={Link}
-          onClick={() => open()}
+          onClick={() => openConnectModal?.()}
         />
       )}
       {user.address && (

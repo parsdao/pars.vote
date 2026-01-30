@@ -106,8 +106,8 @@ export const localhostConfig: NetworkConfig = {
 
     claimErc20MasterCopy: a.ERC20Claim ? getAddressFromContractDeploymentInfo(a.ERC20Claim) : '0x0000000000000000000000000000000000000000',
 
-    daoAutonomousAdminV1MasterCopy: a.DAOAutonomousAdminV1 ? getAddressFromContractDeploymentInfo(
-      a.DAOAutonomousAdminV1,
+    daoAutonomousAdminV1MasterCopy: a.DecentAutonomousAdminV1 ? getAddressFromContractDeploymentInfo(
+      a.DecentAutonomousAdminV1,
     ) : '0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9',
 
     paymaster: {

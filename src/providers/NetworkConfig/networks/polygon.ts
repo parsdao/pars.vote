@@ -1,4 +1,4 @@
-import { legacy, addresses } from '@luxdao/contracts';
+import { legacy } from '@luxdao/contracts';
 import {
   getCompatibilityFallbackHandlerDeployment,
   getMultiSendCallOnlyDeployment,
@@ -89,17 +89,17 @@ export const polygonConfig: NetworkConfig = {
     freezeVotingMultisigMasterCopy: getAddressFromContractDeploymentInfo(a.MultisigFreezeVoting),
 
     votesErc20MasterCopy: getAddressFromContractDeploymentInfo(a.VotesERC20),
-    votesErc20LockableMasterCopy: addresses.deployables.VotesERC20V1,
-    votesERC20StakedV1MasterCopy: addresses.deployables.VotesERC20StakedV1,
+    votesErc20LockableMasterCopy: getAddressFromContractDeploymentInfo(a.VotesERC20LockableV1),
+    votesERC20StakedV1MasterCopy: zeroAddress,
 
     claimErc20MasterCopy: getAddressFromContractDeploymentInfo(a.ERC20Claim),
 
     daoAutonomousAdminV1MasterCopy: getAddressFromContractDeploymentInfo(
-      a.DAOAutonomousAdminV1,
+      a.DecentAutonomousAdminV1,
     ),
 
     paymaster: {
-      daoPaymasterV1MasterCopy: getAddressFromContractDeploymentInfo(a.DAOPaymasterV1),
+      daoPaymasterV1MasterCopy: getAddressFromContractDeploymentInfo(a.DecentPaymasterV1),
       linearERC20VotingV1ValidatorV1: getAddressFromContractDeploymentInfo(
         a.LinearERC20VotingV1ValidatorV1,
       ),
@@ -110,12 +110,12 @@ export const polygonConfig: NetworkConfig = {
 
     keyValuePairs: getAddressFromContractDeploymentInfo(a.KeyValuePairs),
 
-    daoHatsCreationModule: getAddressFromContractDeploymentInfo(a.DAOHatsCreationModule),
+    daoHatsCreationModule: getAddressFromContractDeploymentInfo(a.DecentHatsCreationModule),
     daoHatsModificationModule: getAddressFromContractDeploymentInfo(
-      a.DAOHatsModificationModule,
+      a.DecentHatsModificationModule,
     ),
     daoSablierStreamManagementModule: getAddressFromContractDeploymentInfo(
-      a.DAOSablierStreamManagementModule,
+      a.DecentSablierStreamManagementModule,
     ),
 
     hatsProtocol: '0x3bc1A0Ad72417f2d411118085256fC53CBdDd137',
