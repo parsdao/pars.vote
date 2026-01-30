@@ -14,6 +14,7 @@
     "@hatsprotocol/sdk-v1-core": "^0.9.0",
     "@hatsprotocol/sdk-v1-subgraph": "^1.0.0",
     "@hotjar/browser": "^1.0.9",
+    "@luxdao/contracts": "^2.0.0",
     "@phosphor-icons/react": "^2.1.4",
     "@rainbow-me/rainbowkit": "^2.2.0",
     "@reown/walletkit": "^1.5.0",
@@ -29,6 +30,8 @@
     "@toast-ui/react-editor": "^3.2.3",
     "@torchauth/vite-plugin-wrangler-spa": "^2.0.0",
     "@vitejs/plugin-react-swc": "^3.5.0",
+    "@walletconnect/core": "^2.23.4",
+    "@walletconnect/sign-client": "^2.23.4",
     "axios": "^0.27.2",
     "blo": "^1.2.0",
     "csvtojson": "^2.0.10",
@@ -65,8 +68,7 @@
     "vite-plugin-checker": "^0.6.4",
     "wagmi": "^2.12.12",
     "yup": "^1.4.0",
-    "zustand": "^5.0.4",
-    "@luxdao/contracts": "^2.0.0"
+    "zustand": "^5.0.4"
   },
   "scripts": {
     "lint": "eslint . --ext .ts,.tsx --fix",
