@@ -1,10 +1,14 @@
 import { SingletonDeployment } from '@safe-global/safe-deployments';
 import { Address, getAddress } from 'viem';
 
-export const getAddressFromContractDeploymentInfo = (contractDeploymentInfo: {
-  address: Address;
-  deploymentBlock: number;
-}) => {
+// Handle both string addresses (from @fractal-framework/fractal-contracts)
+// and object format {address, deploymentBlock} (legacy format)
+export const getAddressFromContractDeploymentInfo = (
+  contractDeploymentInfo: string | { address: Address; deploymentBlock: number },
+): Address => {
+  if (typeof contractDeploymentInfo === 'string') {
+    return getAddress(contractDeploymentInfo);
+  }
   return getAddress(contractDeploymentInfo.address);
 };
 
