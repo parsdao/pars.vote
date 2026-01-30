@@ -1,4 +1,4 @@
-import { legacy } from '@luxdao/contracts';
+import { addresses } from '@fractal-framework/fractal-contracts';
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
@@ -62,7 +62,7 @@ export default function useClawBack({ childSafeInfo, parentAddress }: IUseClawBa
                 if (asset.nativeToken) {
                   // We're operating with native coin e.g. ETH
                   const fractalModuleCalldata = encodeFunctionData({
-                    abi: legacy.abis.FractalModule,
+                    abi: abis.FractalModule,
                     functionName: 'execTx',
                     args: [
                       encodeAbiParameters(parseAbiParameters('address, uint256, bytes, uint8'), [
@@ -92,7 +92,7 @@ export default function useClawBack({ childSafeInfo, parentAddress }: IUseClawBa
                   );
 
                   const fractalModuleCalldata = encodeFunctionData({
-                    abi: legacy.abis.FractalModule,
+                    abi: abis.FractalModule,
                     functionName: 'execTx',
                     args: [txData],
                   });

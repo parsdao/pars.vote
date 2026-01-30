@@ -1,5 +1,5 @@
 import { Box, Flex, InputGroup, InputRightElement } from '@chakra-ui/react';
-import { legacy } from '@luxdao/contracts';
+import { addresses } from '@fractal-framework/fractal-contracts';
 import { useFormikContext } from 'formik';
 import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -47,7 +47,7 @@ export function GovernanceParams() {
       if (freezeGuardType == FreezeGuardType.MULTISIG) {
         if (freezeGuardContractAddress && publicClient) {
           const freezeGuardContract = getContract({
-            abi: legacy.abis.MultisigFreezeGuard,
+            abi: abis.MultisigFreezeGuard,
             address: freezeGuardContractAddress,
             client: publicClient,
           });

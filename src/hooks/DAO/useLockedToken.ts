@@ -1,4 +1,4 @@
-import { abis } from '@luxdao/contracts';
+import { abis } from '@fractal-framework/fractal-contracts';
 import { useCallback, useEffect, useState } from 'react';
 import { Address, getContract, zeroAddress } from 'viem';
 import { ROLES } from '../../constants/accessControlRoles';

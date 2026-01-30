@@ -1,4 +1,4 @@
-import { abis } from '@luxdao/contracts';
+import { abis } from '@fractal-framework/fractal-contracts';
 import {
   Address,
   encodeFunctionData,

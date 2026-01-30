@@ -1,4 +1,4 @@
-import { legacy } from '@luxdao/contracts';
+import { addresses } from '@fractal-framework/fractal-contracts';
 import {
   AbiItem,
   Address,
@@ -47,7 +47,7 @@ export const getPaymasterAddress = (args: {
   );
 
   const encodedPaymasterInitializationData = encodeFunctionData({
-    abi: legacy.abis.DAOPaymasterV1,
+    abi: abis.DAOPaymasterV1,
     functionName: 'initialize',
     args: [encodedPaymasterInitializationParams],
   });
@@ -86,7 +86,7 @@ export const getVoteSelectorAndValidator = (
   if (strategyType === FractalTokenType.erc20 || strategyType === GovernanceType.AZORIUS_ERC20) {
     voteAbiItem = getAbiItem({
       name: 'vote',
-      abi: legacy.abis.LinearERC20VotingV1,
+      abi: abis.LinearERC20VotingV1,
     });
     voteValidator = paymaster.linearERC20VotingV1ValidatorV1;
   } else if (
@@ -95,7 +95,7 @@ export const getVoteSelectorAndValidator = (
   ) {
     voteAbiItem = getAbiItem({
       name: 'vote',
-      abi: legacy.abis.LinearERC721VotingV1,
+      abi: abis.LinearERC721VotingV1,
     });
     voteValidator = paymaster.linearERC721VotingV1ValidatorV1;
   } else {

@@ -1,4 +1,4 @@
-import { legacy } from '@luxdao/contracts';
+import { addresses } from '@fractal-framework/fractal-contracts';
 import { useEffect } from 'react';
 import { Address, getContract } from 'viem';
 import useNetworkPublicClient from '../../hooks/useNetworkPublicClient';
@@ -33,7 +33,7 @@ export function useKeyValuePairsListener({
     }
 
     const keyValuePairsContract = getContract({
-      abi: legacy.abis.KeyValuePairs,
+      abi: abis.KeyValuePairs,
       address: keyValuePairs,
       client: publicClient,
     });

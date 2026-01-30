@@ -1,4 +1,4 @@
-import { legacy } from '@luxdao/contracts';
+import { addresses } from '@fractal-framework/fractal-contracts';
 import { useCallback, useEffect, useState } from 'react';
 import { Address, getContract } from 'viem';
 import { useAccount } from 'wagmi';
@@ -54,7 +54,7 @@ export function useCanUserCreateProposal() {
             votingStrategies.map(async strategy => {
               if (!isProposer && user.address) {
                 const votingContract = getContract({
-                  abi: legacy.abis.LinearERC20Voting,
+                  abi: abis.LinearERC20Voting,
                   address: strategy.strategyAddress,
                   client: publicClient,
                 });
@@ -84,7 +84,7 @@ export function useCanUserCreateProposal() {
             ].map(async votingStrategyAddress => {
               if (votingStrategyAddress) {
                 const votingContract = getContract({
-                  abi: legacy.abis.LinearERC20Voting,
+                  abi: abis.LinearERC20Voting,
                   address: votingStrategyAddress,
                   client: publicClient,
                 });

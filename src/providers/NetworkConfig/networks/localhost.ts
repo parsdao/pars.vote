@@ -1,4 +1,3 @@
-import { legacy, addresses } from '@luxdao/contracts';
 import {
   getCompatibilityFallbackHandlerDeployment,
   getMultiSendCallOnlyDeployment,
@@ -39,8 +38,8 @@ const localhost: Chain = {
 };
 
 const chain = localhost;
-// Use localhost addresses for local development
-const a = legacy.addresses?.localhost || addresses?.localhost || {};
+// Localhost has no pre-deployed contracts - use empty object with fallbacks
+const a: Record<string, any> = {};
 
 export const localhostConfig: NetworkConfig = {
   order: 100,

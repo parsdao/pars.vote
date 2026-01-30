@@ -1,4 +1,4 @@
-import { legacy } from '@luxdao/contracts';
+import { addresses } from '@fractal-framework/fractal-contracts';
 import { useCallback, useEffect, useState } from 'react';
 import { Address, erc721Abi, getContract } from 'viem';
 import { useAccount } from 'wagmi';
@@ -56,8 +56,8 @@ export default function useUserERC721VotingTokens(
       return getContract({
         abi:
           _voting === 'erc721'
-            ? legacy.abis.LinearERC721Voting
-            : legacy.abis.LinearERC721VotingWithHatsProposalCreation,
+            ? abis.LinearERC721Voting
+            : abis.LinearERC721VotingWithHatsProposalCreation,
         address: _address,
         client: publicClient,
       });

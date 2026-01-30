@@ -1,4 +1,4 @@
-import { legacy } from '@luxdao/contracts';
+import { addresses } from '@fractal-framework/fractal-contracts';
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getContract } from 'viem';
@@ -30,7 +30,7 @@ export const useCastFreezeVote = () => {
       contractCall({
         contractFn: () => {
           const freezeERC721VotingContract = getContract({
-            abi: legacy.abis.ERC721FreezeVoting,
+            abi: abis.ERC721FreezeVoting,
             address: freezeVotingContractAddress,
             client: walletClient,
           });
@@ -53,7 +53,7 @@ export const useCastFreezeVote = () => {
       contractCall({
         contractFn: () => {
           const freezeERC20VotingContract = getContract({
-            abi: legacy.abis.ERC20FreezeVoting,
+            abi: abis.ERC20FreezeVoting,
             address: freezeVotingContractAddress,
             client: walletClient,
           });
@@ -69,7 +69,7 @@ export const useCastFreezeVote = () => {
       contractCall({
         contractFn: () => {
           const freezeMultisigVotingContract = getContract({
-            abi: legacy.abis.MultisigFreezeVoting,
+            abi: abis.MultisigFreezeVoting,
             address: freezeVotingContractAddress,
             client: walletClient,
           });

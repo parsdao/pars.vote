@@ -1,5 +1,5 @@
 import { Box, Button, Text } from '@chakra-ui/react';
-import { legacy } from '@luxdao/contracts';
+import { addresses } from '@fractal-framework/fractal-contracts';
 import { SafeMultisigTransactionResponse } from '@safe-global/safe-core-sdk-types';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -78,7 +78,7 @@ function useProposalExecutionButtonAction(
         }),
       );
       const freezeGuard = getContract({
-        abi: legacy.abis.MultisigFreezeGuard,
+        abi: abis.MultisigFreezeGuard,
         address: freezeGuardContractAddress,
         client: walletClient,
       });

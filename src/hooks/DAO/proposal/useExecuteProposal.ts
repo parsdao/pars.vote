@@ -1,4 +1,4 @@
-import { legacy } from '@luxdao/contracts';
+import { addresses } from '@fractal-framework/fractal-contracts';
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Address, Hex, getContract } from 'viem';
@@ -29,7 +29,7 @@ export default function useExecuteProposal() {
       }
 
       const azoriusContract = getContract({
-        abi: legacy.abis.Azorius,
+        abi: abis.Azorius,
         address: moduleAzoriusAddress,
         client: walletClient,
       });

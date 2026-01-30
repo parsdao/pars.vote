@@ -1,4 +1,4 @@
-import { legacy } from '@luxdao/contracts';
+import { addresses } from '@fractal-framework/fractal-contracts';
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { encodeFunctionData } from 'viem';
@@ -64,7 +64,7 @@ export default function useCreateProposalTemplate() {
         const { Hash } = await client.add(JSON.stringify(updatedTemplatesList, bigintSerializer));
 
         const encodedUpdateValues = encodeFunctionData({
-          abi: legacy.abis.KeyValuePairs,
+          abi: abis.KeyValuePairs,
           functionName: 'updateValues',
           args: [['proposalTemplates'], [Hash]],
         });

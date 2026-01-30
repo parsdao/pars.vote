@@ -14,7 +14,7 @@
     "@hatsprotocol/sdk-v1-core": "^0.9.0",
     "@hatsprotocol/sdk-v1-subgraph": "^1.1.2",
     "@hotjar/browser": "^1.0.9",
-    "@luxdao/contracts": "^2.0.0",
+    "@fractal-framework/fractal-contracts": "^1.6.1",
     "@phosphor-icons/react": "^2.1.10",
     "@rainbow-me/rainbowkit": "^2.2.10",
     "@reown/walletkit": "^1.5.0",

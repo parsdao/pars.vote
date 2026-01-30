@@ -1,4 +1,4 @@
-import { abis, legacy } from '@luxdao/contracts';
+import { abis, addresses } from '@fractal-framework/fractal-contracts';
 import {
   checkAndEncodeArgs,
   HATS_MODULES_FACTORY_ABI,
@@ -166,7 +166,7 @@ export default function useCreateRoles() {
         }
 
         const existingAbiAndAddress = {
-          abi: legacy.abis.LinearERC20Voting,
+          abi: abis.LinearERC20Voting,
           address: linearVotingErc20Address,
         };
 
@@ -214,7 +214,7 @@ export default function useCreateRoles() {
               ]);
 
         const encodedStrategySetupData = encodeFunctionData({
-          abi: legacy.abis.LinearERC20VotingWithHatsProposalCreation,
+          abi: abis.LinearERC20VotingWithHatsProposalCreation,
           functionName: 'setUp',
           args: [encodedStrategyInitParams],
         });
@@ -251,7 +251,7 @@ export default function useCreateRoles() {
         const enableDeployedVotingStrategyTx = {
           targetAddress: moduleAzoriusAddress,
           calldata: encodeFunctionData({
-            abi: legacy.abis.Azorius,
+            abi: abis.Azorius,
             functionName: 'enableStrategy',
             args: [predictedStrategyAddress],
           }),
@@ -261,7 +261,7 @@ export default function useCreateRoles() {
         if (gaslessVotingEnabled && paymasterAddress) {
           optionallyWhitelistWhitelistingStrategyOnPaymaster.push({
             calldata: encodeFunctionData({
-              abi: legacy.abis.DAOPaymasterV1,
+              abi: abis.DAOPaymasterV1,
               functionName: 'setFunctionValidator',
               args: [predictedStrategyAddress, voteSelector, voteValidator],
             }),
@@ -279,7 +279,7 @@ export default function useCreateRoles() {
         }
 
         const existingAbiAndAddress = {
-          abi: legacy.abis.LinearERC721Voting,
+          abi: abis.LinearERC721Voting,
           address: linearVotingErc721Address,
         };
 
@@ -332,7 +332,7 @@ export default function useCreateRoles() {
               ]);
 
         const encodedStrategySetupData = encodeFunctionData({
-          abi: legacy.abis.LinearERC721VotingWithHatsProposalCreation,
+          abi: abis.LinearERC721VotingWithHatsProposalCreation,
           functionName: 'setUp',
           args: [encodedStrategyInitParams],
         });
@@ -369,7 +369,7 @@ export default function useCreateRoles() {
         const enableDeployedVotingStrategyTx = {
           targetAddress: moduleAzoriusAddress,
           calldata: encodeFunctionData({
-            abi: legacy.abis.Azorius,
+            abi: abis.Azorius,
             functionName: 'enableStrategy',
             args: [predictedStrategyAddress],
           }),
@@ -379,7 +379,7 @@ export default function useCreateRoles() {
         if (gaslessVotingEnabled && paymasterAddress) {
           optionallyWhitelistWhitelistingStrategyOnPaymaster.push({
             calldata: encodeFunctionData({
-              abi: legacy.abis.DAOPaymasterV1,
+              abi: abis.DAOPaymasterV1,
               functionName: 'setFunctionValidator',
               args: [predictedStrategyAddress, voteSelector, voteValidator],
             }),
@@ -676,7 +676,7 @@ export default function useCreateRoles() {
 
       const addedHats = await createHatStructsForNewTreeFromRolesFormValues(modifiedHats);
       const createAndDeclareTreeData = encodeFunctionData({
-        abi: legacy.abis.DAOHatsCreationModule,
+        abi: abis.DAOHatsCreationModule,
         functionName: 'createAndDeclareTree',
         args: [
           {
@@ -766,7 +766,7 @@ export default function useCreateRoles() {
         getEnableDisableDAOHatsModuleData(daoHatsModificationModule);
 
       const createNewRoleData = encodeFunctionData({
-        abi: legacy.abis.DAOHatsModificationModule,
+        abi: abis.DAOHatsModificationModule,
         functionName: 'createRoleHats',
         args: [
           {
@@ -819,7 +819,7 @@ export default function useCreateRoles() {
     async (address: Address) => {
       const daoAutonomousAdminV1Contract = getContract({
         address: address,
-        abi: legacy.abis.DAOAutonomousAdminV1,
+        abi: abis.DAOAutonomousAdminV1,
         client: publicClient,
       });
       const DECENT_AUTONOMOUS_ADMIN_V1_INTERFACE_ID = '0x0ac4a8e8';
@@ -863,7 +863,7 @@ export default function useCreateRoles() {
         args: [
           daoAutonomousAdminV1MasterCopy,
           encodeFunctionData({
-            abi: legacy.abis.DAOAutonomousAdminV1,
+            abi: abis.DAOAutonomousAdminV1,
             functionName: 'setUp',
             args: [zeroAddress],
           }),
@@ -1656,7 +1656,7 @@ export default function useCreateRoles() {
               ) {
                 allTxs.push({
                   calldata: encodeFunctionData({
-                    abi: legacy.abis.DAOAutonomousAdminV1,
+                    abi: abis.DAOAutonomousAdminV1,
                     functionName: 'triggerStartNextTerm',
                     args: [
                       {
@@ -1722,7 +1722,7 @@ export default function useCreateRoles() {
             allTxs.push({
               targetAddress: whitelistingVotingStrategyAddress,
               calldata: encodeFunctionData({
-                abi: legacy.abis.LinearERC20VotingWithHatsProposalCreation,
+                abi: abis.LinearERC20VotingWithHatsProposalCreation,
                 functionName: 'whitelistHat',
                 args: [hatId],
               }),
@@ -1744,7 +1744,7 @@ export default function useCreateRoles() {
           allTxs.push({
             targetAddress: whitelistingVotingStrategyAddress,
             calldata: encodeFunctionData({
-              abi: legacy.abis.LinearERC20VotingWithHatsProposalCreation,
+              abi: abis.LinearERC20VotingWithHatsProposalCreation,
               functionName: 'removeHatFromWhitelist',
               args: [hatId],
             }),

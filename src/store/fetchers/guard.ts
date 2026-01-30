@@ -1,4 +1,4 @@
-import { legacy } from '@luxdao/contracts';
+import { addresses } from '@fractal-framework/fractal-contracts';
 import { useCallback } from 'react';
 import { Address, getContract, GetContractReturnType, PublicClient, zeroAddress } from 'viem';
 import GnosisSafeL2Abi from '../../assets/abi/GnosisSafeL2';
@@ -27,7 +27,7 @@ export function useGuardFetcher() {
     }) => {
       if (_azoriusModule) {
         const azoriusContract = getContract({
-          abi: legacy.abis.Azorius,
+          abi: abis.Azorius,
           address: _azoriusModule.moduleAddress,
           client: publicClient,
         });
@@ -40,7 +40,7 @@ export function useGuardFetcher() {
         }
 
         const freezeGuardContract = getContract({
-          abi: legacy.abis.AzoriusFreezeGuard,
+          abi: abis.AzoriusFreezeGuard,
           address: azoriusGuardAddress,
           client: publicClient,
         });
@@ -60,25 +60,25 @@ export function useGuardFetcher() {
         }
 
         let freezeVotingContract:
-          | GetContractReturnType<typeof legacy.abis.MultisigFreezeVoting, PublicClient>
-          | GetContractReturnType<typeof legacy.abis.ERC20FreezeVoting, PublicClient>
-          | GetContractReturnType<typeof legacy.abis.ERC721FreezeVoting, PublicClient>;
+          | GetContractReturnType<typeof abis.MultisigFreezeVoting, PublicClient>
+          | GetContractReturnType<typeof abis.ERC20FreezeVoting, PublicClient>
+          | GetContractReturnType<typeof abis.ERC721FreezeVoting, PublicClient>;
 
         if (freezeVotingType === FreezeVotingType.ERC20) {
           freezeVotingContract = getContract({
-            abi: legacy.abis.ERC20FreezeVoting,
+            abi: abis.ERC20FreezeVoting,
             address: freezeVotingAddress,
             client: publicClient,
           });
         } else if (freezeVotingType === FreezeVotingType.ERC721) {
           freezeVotingContract = getContract({
-            abi: legacy.abis.ERC721FreezeVoting,
+            abi: abis.ERC721FreezeVoting,
             address: freezeVotingAddress,
             client: publicClient,
           });
         } else if (freezeVotingType === FreezeVotingType.MULTISIG) {
           freezeVotingContract = getContract({
-            abi: legacy.abis.MultisigFreezeVoting,
+            abi: abis.MultisigFreezeVoting,
             address: freezeVotingAddress,
             client: publicClient,
           });
@@ -132,7 +132,7 @@ export function useGuardFetcher() {
         };
       } else if (guardAddress && guardAddress !== zeroAddress) {
         const multisigFreezeGuardContract = getContract({
-          abi: legacy.abis.MultisigFreezeGuard,
+          abi: abis.MultisigFreezeGuard,
           address: guardAddress,
           client: publicClient,
         });
@@ -146,25 +146,25 @@ export function useGuardFetcher() {
             : FreezeVotingType.ERC20;
 
         let freezeVotingContract:
-          | GetContractReturnType<typeof legacy.abis.MultisigFreezeVoting, PublicClient>
-          | GetContractReturnType<typeof legacy.abis.ERC20FreezeVoting, PublicClient>
-          | GetContractReturnType<typeof legacy.abis.ERC721FreezeVoting, PublicClient>;
+          | GetContractReturnType<typeof abis.MultisigFreezeVoting, PublicClient>
+          | GetContractReturnType<typeof abis.ERC20FreezeVoting, PublicClient>
+          | GetContractReturnType<typeof abis.ERC721FreezeVoting, PublicClient>;
 
         if (freezeVotingType === FreezeVotingType.ERC20) {
           freezeVotingContract = getContract({
-            abi: legacy.abis.ERC20FreezeVoting,
+            abi: abis.ERC20FreezeVoting,
             address: freezeVotingAddress,
             client: publicClient,
           });
         } else if (freezeVotingType === FreezeVotingType.ERC721) {
           freezeVotingContract = getContract({
-            abi: legacy.abis.ERC721FreezeVoting,
+            abi: abis.ERC721FreezeVoting,
             address: freezeVotingAddress,
             client: publicClient,
           });
         } else if (freezeVotingType === FreezeVotingType.MULTISIG) {
           freezeVotingContract = getContract({
-            abi: legacy.abis.MultisigFreezeVoting,
+            abi: abis.MultisigFreezeVoting,
             address: freezeVotingAddress,
             client: publicClient,
           });
@@ -248,7 +248,7 @@ export function useGuardFetcher() {
 
       if (multisigGuardAddress) {
         const freezeVotingContract = getContract({
-          abi: legacy.abis.MultisigFreezeVoting,
+          abi: abis.MultisigFreezeVoting,
           address: freezeVotingAddress,
           client: publicClient,
         });
@@ -260,7 +260,7 @@ export function useGuardFetcher() {
 
         if (freezeVotingType === FreezeVotingType.MULTISIG) {
           const safeFreezeVotingContract = getContract({
-            abi: legacy.abis.MultisigFreezeVoting,
+            abi: abis.MultisigFreezeVoting,
             address: freezeVotingAddress,
             client: publicClient,
           });
@@ -275,7 +275,7 @@ export function useGuardFetcher() {
           userHasVotes = owners.find(owner => owner === account) !== undefined;
         } else if (freezeVotingType === FreezeVotingType.ERC20) {
           const freezeERC20VotingContract = getContract({
-            abi: legacy.abis.ERC20FreezeVoting,
+            abi: abis.ERC20FreezeVoting,
             address: freezeVotingAddress,
             client: publicClient,
           });
@@ -285,7 +285,7 @@ export function useGuardFetcher() {
             throw new Error('votesERC20Address is not a valid VotesERC20 contract');
           }
           const votesTokenContract = getContract({
-            abi: legacy.abis.VotesERC20,
+            abi: abis.VotesERC20,
             address: votesERC20Address,
             client: publicClient,
           });
@@ -315,25 +315,25 @@ export function useGuardFetcher() {
         }
       } else if (azoriusGuardAddress) {
         let freezeVotingContract:
-          | GetContractReturnType<typeof legacy.abis.MultisigFreezeVoting, PublicClient>
-          | GetContractReturnType<typeof legacy.abis.ERC20FreezeVoting, PublicClient>
-          | GetContractReturnType<typeof legacy.abis.ERC721FreezeVoting, PublicClient>;
+          | GetContractReturnType<typeof abis.MultisigFreezeVoting, PublicClient>
+          | GetContractReturnType<typeof abis.ERC20FreezeVoting, PublicClient>
+          | GetContractReturnType<typeof abis.ERC721FreezeVoting, PublicClient>;
 
         if (freezeVotingType === FreezeVotingType.ERC20) {
           freezeVotingContract = getContract({
-            abi: legacy.abis.ERC20FreezeVoting,
+            abi: abis.ERC20FreezeVoting,
             address: freezeVotingAddress,
             client: publicClient,
           });
         } else if (freezeVotingType === FreezeVotingType.ERC721) {
           freezeVotingContract = getContract({
-            abi: legacy.abis.ERC721FreezeVoting,
+            abi: abis.ERC721FreezeVoting,
             address: freezeVotingAddress,
             client: publicClient,
           });
         } else if (freezeVotingType === FreezeVotingType.MULTISIG) {
           freezeVotingContract = getContract({
-            abi: legacy.abis.MultisigFreezeVoting,
+            abi: abis.MultisigFreezeVoting,
             address: freezeVotingAddress,
             client: publicClient,
           });
@@ -348,7 +348,7 @@ export function useGuardFetcher() {
 
         if (freezeVotingType === FreezeVotingType.MULTISIG) {
           const safeFreezeVotingContract = getContract({
-            abi: legacy.abis.MultisigFreezeVoting,
+            abi: abis.MultisigFreezeVoting,
             address: freezeVotingAddress,
             client: publicClient,
           });
@@ -363,7 +363,7 @@ export function useGuardFetcher() {
           userHasVotes = owners.find(owner => owner === account) !== undefined;
         } else if (freezeVotingType === FreezeVotingType.ERC20) {
           const freezeERC20VotingContract = getContract({
-            abi: legacy.abis.ERC20FreezeVoting,
+            abi: abis.ERC20FreezeVoting,
             address: freezeVotingAddress,
             client: publicClient,
           });
@@ -373,7 +373,7 @@ export function useGuardFetcher() {
             throw new Error('votesERC20Address is not a valid VotesERC20 contract');
           }
           const votesTokenContract = getContract({
-            abi: legacy.abis.VotesERC20,
+            abi: abis.VotesERC20,
             address: votesERC20Address,
             client: publicClient,
           });

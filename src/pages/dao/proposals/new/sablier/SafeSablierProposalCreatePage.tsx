@@ -1,6 +1,6 @@
 import * as amplitude from '@amplitude/analytics-browser';
 import { Center } from '@chakra-ui/react';
-import { abis } from '@luxdao/contracts';
+import { abis } from '@fractal-framework/fractal-contracts';
 import groupBy from 'lodash.groupby';
 import { useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';

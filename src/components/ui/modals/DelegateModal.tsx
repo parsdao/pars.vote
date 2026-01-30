@@ -1,5 +1,5 @@
 import { Box, Button, Flex, SimpleGrid, Spacer, Text } from '@chakra-ui/react';
-import { legacy } from '@luxdao/contracts';
+import { addresses } from '@fractal-framework/fractal-contracts';
 import { Field, FieldAttributes, Formik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { getAddress, getContract, zeroAddress } from 'viem';
@@ -53,7 +53,7 @@ export function DelegateModal({ close }: { close: Function }) {
     }
 
     const votingTokenContract = getContract({
-      abi: legacy.abis.VotesERC20,
+      abi: abis.VotesERC20,
       address: votesTokenAddress,
       client: walletClient,
     });

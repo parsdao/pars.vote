@@ -1,4 +1,4 @@
-import { legacy } from '@luxdao/contracts';
+import { addresses } from '@fractal-framework/fractal-contracts';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { getContract } from 'viem';
 import { logError } from '../../../helpers/errorLogging';
@@ -66,7 +66,7 @@ export function useProposalCountdown(proposal: FractalProposal) {
           try {
             if (governance.isAzorius && moduleAzoriusAddress !== undefined) {
               const azoriusContract = getContract({
-                abi: legacy.abis.Azorius,
+                abi: abis.Azorius,
                 address: moduleAzoriusAddress,
                 client: publicClient,
               });
@@ -121,7 +121,7 @@ export function useProposalCountdown(proposal: FractalProposal) {
     const freezeGuard =
       freezeGuardContractAddress !== undefined && freezeGuardType === FreezeGuardType.MULTISIG
         ? getContract({
-            abi: legacy.abis.MultisigFreezeGuard,
+            abi: abis.MultisigFreezeGuard,
             address: freezeGuardContractAddress,
             client: publicClient,
           })

@@ -1,4 +1,4 @@
-import { legacy } from '@luxdao/contracts';
+import { addresses } from '@fractal-framework/fractal-contracts';
 import { keccak256, encodePacked, isHex, Address, getContract, PublicClient } from 'viem';
 import { buildSignatureBytes } from '../helpers/crypto';
 import { FractalProposal } from '../types';
@@ -29,7 +29,7 @@ export async function getTxTimelockedTimestamp(
 
   const freezeGuard = getContract({
     address: freezeGuardAddress,
-    abi: legacy.abis.MultisigFreezeGuard,
+    abi: abis.MultisigFreezeGuard,
     client: publicClient,
   });
 

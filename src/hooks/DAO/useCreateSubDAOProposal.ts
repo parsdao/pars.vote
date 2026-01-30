@@ -1,4 +1,4 @@
-import { legacy } from '@luxdao/contracts';
+import { addresses } from '@fractal-framework/fractal-contracts';
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { encodeFunctionData, isHex } from 'viem';
@@ -73,7 +73,7 @@ export const useCreateSubDAOProposal = () => {
         }
 
         const encodedDeclareSubDAO = encodeFunctionData({
-          abi: legacy.abis.KeyValuePairs,
+          abi: abis.KeyValuePairs,
           functionName: 'updateValues',
           args: [['childDao'], [predictedSafeAddress]],
         });

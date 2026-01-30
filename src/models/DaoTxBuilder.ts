@@ -1,4 +1,4 @@
-import { legacy } from '@luxdao/contracts';
+import { addresses } from '@fractal-framework/fractal-contracts';
 import { Address, encodeFunctionData, Hex, PublicClient, zeroAddress } from 'viem';
 import GnosisSafeL2Abi from '../assets/abi/GnosisSafeL2';
 import MultiSendCallOnlyAbi from '../assets/abi/MultiSendCallOnly';
@@ -253,7 +253,7 @@ export class DaoTxBuilder extends BaseTxBuilder {
       encodedFunctionData: encodeFunctionData({
         functionName: 'updateValues',
         args: [['daoName'], [this.daoData.daoName]],
-        abi: legacy.abis.KeyValuePairs,
+        abi: abis.KeyValuePairs,
       }),
     });
   }
@@ -264,7 +264,7 @@ export class DaoTxBuilder extends BaseTxBuilder {
       encodedFunctionData: encodeFunctionData({
         functionName: 'updateValues',
         args: [['snapshotENS'], [this.daoData.snapshotENS]],
-        abi: legacy.abis.KeyValuePairs,
+        abi: abis.KeyValuePairs,
       }),
     });
   }

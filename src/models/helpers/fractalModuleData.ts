@@ -1,4 +1,4 @@
-import { legacy } from '@luxdao/contracts';
+import { addresses } from '@fractal-framework/fractal-contracts';
 import {
   Address,
   encodeAbiParameters,
@@ -28,7 +28,7 @@ export const fractalModuleData = (
   parentAddress?: Address | null,
 ): DAOModule => {
   const fractalModuleCalldata = encodeFunctionData({
-    abi: legacy.abis.FractalModule,
+    abi: abis.FractalModule,
     functionName: 'setUp',
     args: [
       encodeAbiParameters(parseAbiParameters(['address, address, address, address[]']), [

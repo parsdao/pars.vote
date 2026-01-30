@@ -1,4 +1,4 @@
-import { legacy } from '@luxdao/contracts';
+import { addresses } from '@fractal-framework/fractal-contracts';
 import {
   createContext,
   ReactNode,
@@ -129,7 +129,7 @@ export function VoteContextProvider({
         } else if (governance.type === GovernanceType.AZORIUS_ERC20) {
           const azoriusProposal = proposal as AzoriusProposal;
           const ozLinearVotingContract = getContract({
-            abi: legacy.abis.LinearERC20Voting,
+            abi: abis.LinearERC20Voting,
             address: azoriusProposal.votingStrategy,
             client: publicClient,
           });

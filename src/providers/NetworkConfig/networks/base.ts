@@ -1,4 +1,4 @@
-import { legacy } from '@luxdao/contracts';
+import { addresses } from '@fractal-framework/fractal-contracts';
 import {
   getCompatibilityFallbackHandlerDeployment,
   getMultiSendCallOnlyDeployment,
@@ -18,7 +18,7 @@ import {
 const SAFE_VERSION = '1.3.0';
 
 const chain = base;
-const a = legacy.addresses[chain.id];
+const a = addresses[chain.id];
 
 export const baseConfig: NetworkConfig = {
   order: 10,

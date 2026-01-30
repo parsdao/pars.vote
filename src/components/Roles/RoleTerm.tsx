@@ -1,5 +1,5 @@
 import { Box, Button, Flex, Icon, Text } from '@chakra-ui/react';
-import { legacy } from '@luxdao/contracts';
+import { addresses } from '@fractal-framework/fractal-contracts';
 import { ArrowRight, Calendar, ClockCountdown, Copy } from '@phosphor-icons/react';
 import { format } from 'date-fns';
 import { useCallback, useMemo } from 'react';
@@ -325,7 +325,7 @@ export default function RoleTerm({
     contractCall({
       contractFn: () => {
         const daoAutonomousAdminContract = getContract({
-          abi: legacy.abis.DAOAutonomousAdminV1,
+          abi: abis.DAOAutonomousAdminV1,
           address: adminHatWearer,
           client: walletClient,
         });

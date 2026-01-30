@@ -1,4 +1,4 @@
-import { legacy } from '@luxdao/contracts';
+import { addresses } from '@fractal-framework/fractal-contracts';
 import { useCallback, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
@@ -93,7 +93,7 @@ export default function useSubmitProposal({
     }
 
     return getContract({
-      abi: legacy.abis.Azorius,
+      abi: abis.Azorius,
       address: azoriusModule.moduleAddress,
       client: walletClient,
     });
@@ -345,7 +345,7 @@ export default function useSubmitProposal({
         }));
 
         const azoriusContract = getContract({
-          abi: legacy.abis.Azorius,
+          abi: abis.Azorius,
           address: azoriusAddress,
           client: walletClient,
         });
@@ -424,7 +424,7 @@ export default function useSubmitProposal({
             await Promise.all(
               votingStrategies.map(async votingStrategy => {
                 const votingContract = getContract({
-                  abi: legacy.abis.LinearERC20Voting,
+                  abi: abis.LinearERC20Voting,
                   client: publicClient,
                   address: votingStrategy.strategyAddress,
                 });
@@ -482,7 +482,7 @@ export default function useSubmitProposal({
                 }
                 try {
                   const votingContract = getContract({
-                    abi: legacy.abis.LinearERC20Voting,
+                    abi: abis.LinearERC20Voting,
                     client: publicClient,
                     address: votingStrategy,
                   });

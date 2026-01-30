@@ -1,4 +1,4 @@
-import { legacy } from '@luxdao/contracts';
+import { addresses } from '@fractal-framework/fractal-contracts';
 import { useCallback } from 'react';
 import { Address, getContract, zeroAddress } from 'viem';
 import { SENTINEL_ADDRESS } from '../../constants/common';
@@ -44,7 +44,7 @@ const useVotingStrategiesAddresses = () => {
       }
 
       const azoriusContract = getContract({
-        abi: legacy.abis.Azorius,
+        abi: abis.Azorius,
         address: azoriusModule.moduleAddress,
         client: publicClient,
       });
