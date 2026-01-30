@@ -16,7 +16,7 @@
     "@hotjar/browser": "^1.0.9",
     "@luxdao/contracts": "^2.0.0",
     "@phosphor-icons/react": "^2.1.4",
-    "@rainbow-me/rainbowkit": "^2.1.7",
+    "@rainbow-me/rainbowkit": "2.1.7",
     "@reown/walletkit": "^1.5.0",
     "@safe-global/api-kit": "^2.4.2",
     "@safe-global/safe-apps-sdk": "^9.1.0",
@@ -131,6 +131,12 @@
   "overrides": {
     "@toast-ui/react-editor": {
       "react": "^18.2.0"
+    },
+    "@rainbow-me/rainbowkit": "2.1.7"
+  },
+  "pnpm": {
+    "overrides": {
+      "@rainbow-me/rainbowkit": "2.1.7"
     }
   }
 }
