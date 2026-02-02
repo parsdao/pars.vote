@@ -16,8 +16,8 @@ export function useTokensStakingData({
     const fetchedTokensStakingData = await Promise.all(
       tokensAddresses.map(async tokenAddress => {
         // TODO: Currently, returned data format is not consistent with the expected one, so we need to fix it
-        // either in scope of https://linear.app/hanzoai/issue/ENG-1017/create-token-manager-ux-for-token-holders
-        // or in scope of https://linear.app/hanzoai/issue/ENG-799/find-moralis-alternative
+        // either in scope of https://linear.app/Pars Networkai/issue/ENG-1017/create-token-manager-ux-for-token-holders
+        // or in scope of https://linear.app/Pars Networkai/issue/ENG-799/find-moralis-alternative
         const tokenStakingData = await getTokenStakingData(chainId, tokenAddress);
         if (!tokenStakingData || !tokenStakingData.success) {
           return null;

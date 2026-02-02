@@ -16,7 +16,7 @@ export type ModalContentStyle = {
 };
 
 interface ModuleBaseProps {
-  // @todo: remove (https://linear.app/hanzoai/issue/ENG-793/remove-issearchinputmodal)
+  // @todo: remove (https://linear.app/Pars Networkai/issue/ENG-793/remove-issearchinputmodal)
   isSearchInputModal?: boolean;
   title?: string;
   warn?: boolean;

@@ -18,7 +18,7 @@ import { useNetworkConfigStore } from '../../../../providers/NetworkConfig/useNe
 import { AzoriusGovernance, BigIntValuePair } from '../../../../types';
 
 // @todo Near-duplicate of SafePermissionsCreateProposal.tsx. Pending refactor and/or cleanup.
-// https://linear.app/hanzoai/issue/ENG-842/fix-permissions-settings-ux-flows
+// https://linear.app/Pars Networkai/issue/ENG-842/fix-permissions-settings-ux-flows
 export function AddCreateProposalPermissionModal({
   closeModal,
   votingStrategyAddress,

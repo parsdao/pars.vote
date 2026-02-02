@@ -45,7 +45,7 @@ import {
 } from '../../../../types';
 
 // @todo Remove in favour of AddCreateProposalPermissionModal.
-// https://linear.app/hanzoai/issue/ENG-842/fix-permissions-settings-ux-flows
+// https://linear.app/Pars Networkai/issue/ENG-842/fix-permissions-settings-ux-flows
 export function SafePermissionsCreateProposal() {
   const publicClient = useNetworkPublicClient();
   const { t } = useTranslation(['settings', 'common', 'modals']);
