@@ -398,7 +398,7 @@ export function DAO10Overview({ className = "" }: DAO10OverviewProps) {
         <h2 className="text-2xl font-semibold mb-4">Ready to Participate?</h2>
         <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
           Join CYRUS NGO's governance system. Lock PARS+CYRUS to receive vePARS voting power 
-          and help shape the future of Persian diaspora representation.
+          and help shape the future of global Parsi representation.
         </p>
         <div className="space-x-4">
           <button className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:opacity-90 transition-opacity">
